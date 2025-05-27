@@ -2,6 +2,13 @@
 Changelog for package gps_tools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Update deprecated call to ament_target_dependencies (`#110 <https://github.com/swri-robotics/gps_umd/issues/110>`_)
+  ---------
+  Co-authored-by: David Anthony <djanthony@gmail.com>
+* Contributors: David V. Lu!!
+
 2.0.5 (2025-05-20)
 ------------------
 * Removing all ament_target_dependencies() calls (`#111 <https://github.com/swri-robotics/gps_umd/issues/111>`_)
