@@ -55,22 +55,20 @@ catkin_package(
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include ${catkin_INCLUDE_DIRS})
 
-add_executable(${PROJECT_NAME}/utm_odometry_node src/utm_odometry_node.cpp)
-add_executable(${PROJECT_NAME}/utm_odometry_to_navsatfix_node src/utm_odometry_to_navsatfix_node.cpp)
+add_executable(utm_odometry_node src/utm_odometry_node.cpp)
+add_executable(utm_odometry_to_navsatfix_node src/utm_odometry_to_navsatfix_node.cpp)
 
-set_target_properties(${PROJECT_NAME}/utm_odometry_node PROPERTIES OUTPUT_NAME "utm_odometry_node")
-target_link_libraries(${PROJECT_NAME}/utm_odometry_node ${catkin_LIBRARIES})
+target_link_libraries(utm_odometry_node ${catkin_LIBRARIES})
 
-set_target_properties(${PROJECT_NAME}/utm_odometry_to_navsatfix_node PROPERTIES OUTPUT_NAME "utm_odometry_to_navsatfix_node")
-target_link_libraries(${PROJECT_NAME}/utm_odometry_to_navsatfix_node ${catkin_LIBRARIES})
+target_link_libraries(utm_odometry_to_navsatfix_node ${catkin_LIBRARIES})
 
-add_dependencies(${PROJECT_NAME}/utm_odometry_node
+add_dependencies(utm_odometry_node
   ${PROJECT_NAME}_generate_messages_cpp 
   ${catkin_EXPORTED_TARGETS} 
   ${${PROJECT_NAME}_EXPORTED_TARGETS}
 )
 
-add_dependencies(${PROJECT_NAME}/utm_odometry_to_navsatfix_node
+add_dependencies(utm_odometry_to_navsatfix_node
   ${PROJECT_NAME}_generate_messages_cpp 
   ${catkin_EXPORTED_TARGETS} 
   ${${PROJECT_NAME}_EXPORTED_TARGETS}
@@ -81,8 +79,8 @@ add_dependencies(${PROJECT_NAME}/utm_odometry_to_navsatfix_node
 #############
 
 install(TARGETS
-  ${PROJECT_NAME}/utm_odometry_node
-  ${PROJECT_NAME}/utm_odometry_to_navsatfix_node
+  utm_odometry_node
+  utm_odometry_to_navsatfix_node
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
