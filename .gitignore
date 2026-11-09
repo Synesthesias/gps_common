@@ -6,3 +6,4 @@
 .o
 .pyc
 cmake-build-debug
+**/.claude/settings.local.json
