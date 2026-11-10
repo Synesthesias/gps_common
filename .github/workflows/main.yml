@@ -2,9 +2,13 @@ name: CI
 
 on: [push, pull_request]
 
+permissions:
+  contents: read
+
 jobs:
   industrial_ci:
     strategy:
+      fail-fast: false
       matrix:
         env:
           - {ROS_DISTRO: humble, ROS_REPO: testing}
@@ -13,8 +17,9 @@ jobs:
           - {ROS_DISTRO: jazzy, ROS_REPO: main, PIP_BREAK_SYSTEM_PACKAGES: True}
           - {ROS_DISTRO: kilted, ROS_REPO: testing, PIP_BREAK_SYSTEM_PACKAGES: True}
           - {ROS_DISTRO: kilted, ROS_REPO: main, PIP_BREAK_SYSTEM_PACKAGES: True}
-          - {ROS_DISTRO: rolling, ROS_REPO: testing, PIP_BREAK_SYSTEM_PACKAGES: True}
-          - {ROS_DISTRO: rolling, ROS_REPO: main, PIP_BREAK_SYSTEM_PACKAGES: True}
+          # Rolling は公式の ROS 導入済みイメージで起動し、main/testing の両方を検証します。
+          - {ROS_DISTRO: rolling, ROS_REPO: testing, PIP_BREAK_SYSTEM_PACKAGES: True, DOCKER_IMAGE: 'ros:rolling-ros-base'}
+          - {ROS_DISTRO: rolling, ROS_REPO: main, PIP_BREAK_SYSTEM_PACKAGES: True, DOCKER_IMAGE: 'ros:rolling-ros-base'}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
